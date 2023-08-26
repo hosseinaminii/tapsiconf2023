@@ -25,12 +25,27 @@ kotlin {
         }
     }
 
+    val coroutineVersion = "1.7.3"
+
     sourceSets {
         val commonMain by getting {
             dependencies {
-                //put your multiplatform dependencies here
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutineVersion")
             }
         }
+        val androidMain by getting {
+            dependsOn(commonMain)
+            dependencies {
+                //androidMain dependencies
+            }
+        }
+        val iosMain by getting {
+            dependsOn(commonMain)
+            dependencies {
+                //iosMain dependencies
+            }
+        }
+
         val commonTest by getting {
             dependencies {
                 implementation(kotlin("test"))
