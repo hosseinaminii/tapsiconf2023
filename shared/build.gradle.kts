@@ -26,6 +26,7 @@ kotlin {
     }
 
     val coroutineVersion = "1.7.3"
+    val viewModelVersion = "2.5.1"
 
     sourceSets {
         val commonMain by getting {
@@ -36,7 +37,7 @@ kotlin {
         val androidMain by getting {
             dependsOn(commonMain)
             dependencies {
-                //androidMain dependencies
+                implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$viewModelVersion")
             }
         }
         val iosMain by getting {
