@@ -27,23 +27,26 @@ kotlin {
 
     val coroutineVersion = "1.7.3"
     val viewModelVersion = "2.5.1"
+    val ktorVersion = "2.3.3"
 
     sourceSets {
         val commonMain by getting {
             dependencies {
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutineVersion")
+                implementation("io.ktor:ktor-client-core:$ktorVersion")
             }
         }
         val androidMain by getting {
             dependsOn(commonMain)
             dependencies {
                 implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$viewModelVersion")
+                implementation("io.ktor:ktor-client-okhttp:$ktorVersion")
             }
         }
         val iosMain by getting {
             dependsOn(commonMain)
             dependencies {
-                //iosMain dependencies
+                implementation("io.ktor:ktor-client-darwin:$ktorVersion")
             }
         }
 
