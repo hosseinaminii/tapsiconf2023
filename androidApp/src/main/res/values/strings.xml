@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="repo_info">forks %d watchers %d open issues %d</string>
+</resources>
