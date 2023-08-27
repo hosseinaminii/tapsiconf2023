@@ -2,15 +2,16 @@ import SwiftUI
 import shared
 
 struct ContentView: View {
-    let githubViewModel = GithubViewModel()
+    
+    @StateObject
+    var iosGithubViewModel = IOSGithubViewModel()
 
 	var body: some View {
-        List {
-            ForEach(githubViewModel.items, id: \.self) { item in
-                Item(itemResponse: item)
-                
-            }
-        }
+         List {
+             ForEach(iosGithubViewModel.items, id: \.self) { item in
+                 Item(itemResponse: item)
+             }
+         }
 	}
 }
 

@@ -6,32 +6,33 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.tapsiconf.response.ItemResponse
 import com.example.tapsiconf.viewModel.GithubViewModel
 
 @Composable
 fun GithubScreen() {
     val githubViewModel: GithubViewModel = viewModel()
+    val items by githubViewModel.items.collectAsState()
 
     Scaffold { paddingValues ->
         LazyColumn(modifier = Modifier.padding(paddingValues)) {
-            items(githubViewModel.items.size) { index ->
-                Item(githubViewModel, index)
+            items(items.size) { index ->
+                Item(items[index])
             }
         }
     }
 }
 
 @Composable
-private fun Item(
-    githubViewModel: GithubViewModel,
-    index: Int
-) {
+private fun Item(item: ItemResponse) {
     Column(Modifier.padding(end = 16.dp, start = 16.dp, top = 10.dp)) {
-        val repo = githubViewModel.items[index]
+        val repo = item
         Text(text = repo.name)
         Text(
             text = stringResource(

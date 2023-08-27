@@ -2,6 +2,8 @@ plugins {
     kotlin("multiplatform")
     id("com.android.library")
     kotlin("plugin.serialization") version "1.9.0"
+    id("com.google.devtools.ksp") version "1.9.10-1.0.13"
+    id("com.rickclephas.kmp.nativecoroutines") version "1.0.0-ALPHA-18"
 }
 
 @OptIn(org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi::class)
@@ -32,6 +34,10 @@ kotlin {
     val kotlinxSerializationVersion = "1.5.1"
 
     sourceSets {
+        all {
+            languageSettings.optIn("kotlin.experimental.ExperimentalObjCName")
+        }
+
         val commonMain by getting {
             dependencies {
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutineVersion")

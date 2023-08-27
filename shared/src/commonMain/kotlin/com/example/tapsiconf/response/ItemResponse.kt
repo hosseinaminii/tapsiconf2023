@@ -1,9 +1,14 @@
 package com.example.tapsiconf.response
 
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
+
+@Serializable
 data class ItemResponse(
     val id: Int,
     val name: String,
     val forks: Int,
+    @SerialName("open_issues")
     val openIssues: Int,
     val watchers: Int
 )
