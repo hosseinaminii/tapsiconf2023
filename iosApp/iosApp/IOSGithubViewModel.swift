@@ -12,7 +12,7 @@ import KMPNativeCoroutinesAsync
 
 @MainActor
 class IOSGithubViewModel: ObservableObject {
-    private let githubViewModel = GithubViewModel()
+    private let githubViewModelHelper = GithubViewModelHelper()
     
     @Published
     var items = Array<ItemResponse>()
@@ -22,7 +22,7 @@ class IOSGithubViewModel: ObservableObject {
     init() {
         task = Task {
             do {
-                let asyncItems = asyncSequence(for: githubViewModel.itemsFlow)
+                let asyncItems = asyncSequence(for: githubViewModelHelper.itemsFlow)
                 for try await asyncItem in asyncItems {
                     items = asyncItem
                 }

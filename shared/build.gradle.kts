@@ -32,6 +32,7 @@ kotlin {
     val viewModelVersion = "2.5.1"
     val ktorVersion = "2.3.3"
     val kotlinxSerializationVersion = "1.5.1"
+    val koinVersion = "3.4.3"
 
     sourceSets {
         all {
@@ -45,6 +46,7 @@ kotlin {
                 implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:$kotlinxSerializationVersion")
                 implementation("io.ktor:ktor-client-content-negotiation:$ktorVersion")
                 implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
+                implementation("io.insert-koin:koin-core:$koinVersion")
             }
         }
         val androidMain by getting {
@@ -52,6 +54,7 @@ kotlin {
             dependencies {
                 implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$viewModelVersion")
                 implementation("io.ktor:ktor-client-okhttp:$ktorVersion")
+                implementation("io.insert-koin:koin-android:$koinVersion")
             }
         }
         val iosMain by getting {

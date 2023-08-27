@@ -14,10 +14,11 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.tapsiconf.response.ItemResponse
 import com.example.tapsiconf.viewModel.GithubViewModel
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun GithubScreen() {
-    val githubViewModel: GithubViewModel = viewModel()
+    val githubViewModel: GithubViewModel = koinViewModel()
     val items by githubViewModel.items.collectAsState()
 
     Scaffold { paddingValues ->

@@ -11,6 +11,8 @@ struct ContentView: View {
              ForEach(iosGithubViewModel.items, id: \.self) { item in
                  Item(itemResponse: item)
              }
+         }.onDisappear {
+             iosGithubViewModel.clear()
          }
 	}
 }

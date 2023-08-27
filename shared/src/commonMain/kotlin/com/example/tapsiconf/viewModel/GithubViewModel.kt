@@ -9,12 +9,9 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
-class GithubViewModel: SharedViewModel() {
-
-    private val githubRepository = GithubRepository()
+class GithubViewModel(private val githubRepository: GithubRepository): SharedViewModel() {
 
     private val _items = MutableStateFlow<List<ItemResponse>>(listOf())
-    @NativeCoroutinesState
     val items = _items.asStateFlow()
 
     init {
